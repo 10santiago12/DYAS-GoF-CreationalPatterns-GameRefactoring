@@ -8,10 +8,11 @@ import java.awt.Color;
 public class ColorfulBulletGraphic implements BulletGraphic {
 
     @Override
-    public void render(Graphics g, double x, double y) {
+public void render(Graphics g, double x, double y) {
         g.setColor(Color.ORANGE);
-        g.fillOval((int)x, (int)y, 6, 10);
+        g.fillOval((int)x - 3, (int)y - 5, 6, 10);
         g.setColor(Color.YELLOW);
-        g.drawOval((int)x, (int)y, 6, 10);
+        g.drawOval((int)x - 3, (int)y - 5, 6, 10);
     }
+
 }
