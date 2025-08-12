@@ -1,0 +1,218 @@
+@startuml
+top to bottom direction
+scale max 1200x2000
+
+skinparam linetype ortho
+skinparam nodesep 50
+skinparam ranksep 60
+skinparam classAttributeIconSize 0
+skinparam wrapWidth 200
+skinparam maxMessageSize 200
+
+class com.balitechy.spacewar.main.BackgroundRenderer {
+	{method} +render ( paramGraphics1 : java.awt.Graphics , paramCanvas2 : java.awt.Canvas ) : void
+}
+
+class com.balitechy.spacewar.main.Bullet {
+	{field} {static} +HEIGHT : int
+	{field} {static} +WIDTH : int
+	{field} -x : double
+	{field} -y : double
+	{method} +render ( paramGraphics1 : java.awt.Graphics ) : void
+	{method} +tick () : void
+}
+
+
+class com.balitechy.spacewar.main.BulletController {
+	{method} +addBullet ( paramBullet1 : com.balitechy.spacewar.main.Bullet ) : void
+	{method} +removeBullet ( paramBullet1 : com.balitechy.spacewar.main.Bullet ) : void
+	{method} +render ( paramGraphics1 : java.awt.Graphics ) : void
+	{method} +tick () : void
+}
+
+
+class com.balitechy.spacewar.main.ColorfulVectorial.ColorfulBackgroundGraphic {
+	{method} +render ( paramGraphics1 : java.awt.Graphics , paramCanvas2 : java.awt.Canvas ) : void
+}
+
+
+class com.balitechy.spacewar.main.ColorfulVectorial.ColorfulBulletGraphic {
+	{method} +render ( paramGraphics1 : java.awt.Graphics , paramdouble2 : double , paramdouble3 : double ) : void
+}
+
+
+class com.balitechy.spacewar.main.ColorfulVectorial.ColorfulPlayerGraphic {
+	{method} +render ( paramGraphics1 : java.awt.Graphics , paramdouble2 : double , paramdouble3 : double ) : void
+}
+
+
+class com.balitechy.spacewar.main.ColorfulVectorial.ColorfulVectorialFactory {
+	{method} +createBackgroundGraphic ( paramGame1 : com.balitechy.spacewar.main.Game ) : com.balitechy.spacewar.main.Interfaces.BackgroundGraphic
+	{method} +createBulletGraphic ( paramGame1 : com.balitechy.spacewar.main.Game ) : com.balitechy.spacewar.main.Interfaces.BulletGraphic
+	{method} +createPlayerGraphic ( paramGame1 : com.balitechy.spacewar.main.Game ) : com.balitechy.spacewar.main.Interfaces.PlayerGraphic
+}
+
+
+class com.balitechy.spacewar.main.Game {
+	{field} {static} +HEIGHT : int
+	{field} {static} +SCALE : int
+	{field} +TITLE : String
+	{field} {static} +WIDTH : int
+	{field} -image : java.awt.image.BufferedImage
+	{field} -running : boolean
+	{field} {static} -serialVersionUID : long
+	{field} -thread : Thread
+	{method} +init () : void
+	{method} +keyPressed ( paramKeyEvent1 : java.awt.event.KeyEvent ) : void
+	{method} +keyReleased ( paramKeyEvent1 : java.awt.event.KeyEvent ) : void
+	{method}  {static} +main ( paramString;1 : [Ljava.lang.String; ) : void
+	{method} +render () : void
+	{method} +run () : void
+	{method} -start () : void <<synchronized>> 
+	{method} -stop () : void <<synchronized>> 
+	{method} +tick () : void
+}
+
+
+class com.balitechy.spacewar.main.GameConfig {
+	{method}  {static} +getFactory () : com.balitechy.spacewar.main.Interfaces.GraphicFactory
+}
+
+
+enum com.balitechy.spacewar.main.GameConfig$Style {
+	{field} +COLORFUL_VECTORIAL
+	{field} +SPRITES
+	{field} +VECTORIAL
+}
+
+
+class com.balitechy.spacewar.main.InputHandler {
+	{method} +keyPressed ( paramKeyEvent1 : java.awt.event.KeyEvent ) : void
+	{method} +keyReleased ( paramKeyEvent1 : java.awt.event.KeyEvent ) : void
+}
+
+
+interface com.balitechy.spacewar.main.Interfaces.BackgroundGraphic {
+	{method}  {abstract} +render ( paramGraphics1 : java.awt.Graphics , paramCanvas2 : java.awt.Canvas ) : void
+}
+
+
+interface com.balitechy.spacewar.main.Interfaces.BulletGraphic {
+	{method}  {abstract} +render ( paramGraphics1 : java.awt.Graphics , paramdouble2 : double , paramdouble3 : double ) : void
+}
+
+
+interface com.balitechy.spacewar.main.Interfaces.GraphicFactory {
+	{method}  {abstract} +createBackgroundGraphic ( paramGame1 : com.balitechy.spacewar.main.Game ) : com.balitechy.spacewar.main.Interfaces.BackgroundGraphic
+	{method}  {abstract} +createBulletGraphic ( paramGame1 : com.balitechy.spacewar.main.Game ) : com.balitechy.spacewar.main.Interfaces.BulletGraphic
+	{method}  {abstract} +createPlayerGraphic ( paramGame1 : com.balitechy.spacewar.main.Game ) : com.balitechy.spacewar.main.Interfaces.PlayerGraphic
+}
+
+
+interface com.balitechy.spacewar.main.Interfaces.PlayerGraphic {
+	{method}  {abstract} +render ( paramGraphics1 : java.awt.Graphics , paramdouble2 : double , paramdouble3 : double ) : void
+}
+
+
+class com.balitechy.spacewar.main.Player {
+	{field} {static} +HEIGHT : int
+	{field} {static} +WIDTH : int
+	{field} -velX : double
+	{field} -velY : double
+	{field} +x : double
+	{field} +y : double
+	{method} +render ( paramGraphics1 : java.awt.Graphics ) : void
+	{method} +shoot () : void
+	{method} +tick () : void
+}
+
+
+class com.balitechy.spacewar.main.SpriteStyle.SpritesBackgroundGraphic {
+	{field} -background : java.awt.image.BufferedImage
+	{method} +render ( paramGraphics1 : java.awt.Graphics , paramCanvas2 : java.awt.Canvas ) : void
+}
+
+
+class com.balitechy.spacewar.main.SpriteStyle.SpritesBulletGraphic {
+	{field} {static} +HEIGHT : int
+	{field} {static} +WIDTH : int
+	{field} -img : java.awt.image.BufferedImage
+	{method} +render ( paramGraphics1 : java.awt.Graphics , paramdouble2 : double , paramdouble3 : double ) : void
+}
+
+
+class com.balitechy.spacewar.main.SpriteStyle.SpritesFactory {
+	{method} +createBackgroundGraphic ( paramGame1 : com.balitechy.spacewar.main.Game ) : com.balitechy.spacewar.main.Interfaces.BackgroundGraphic
+	{method} +createBulletGraphic ( paramGame1 : com.balitechy.spacewar.main.Game ) : com.balitechy.spacewar.main.Interfaces.BulletGraphic
+	{method} +createPlayerGraphic ( paramGame1 : com.balitechy.spacewar.main.Game ) : com.balitechy.spacewar.main.Interfaces.PlayerGraphic
+}
+
+
+class com.balitechy.spacewar.main.SpriteStyle.SpritesPlayerGraphic {
+	{field} {static} +HEIGHT : int
+	{field} {static} +WIDTH : int
+	{field} -img : java.awt.image.BufferedImage
+	{method} +render ( paramGraphics1 : java.awt.Graphics , paramdouble2 : double , paramdouble3 : double ) : void
+}
+
+
+class com.balitechy.spacewar.main.SpritesImageLoader {
+	{field} -image : java.awt.image.BufferedImage
+	{field} -path : String
+	{method} +loadImage () : java.awt.image.BufferedImage
+}
+
+
+class com.balitechy.spacewar.main.VectorialStyle.VectorialBackground {
+	{method} +render ( paramGraphics1 : java.awt.Graphics , paramCanvas2 : java.awt.Canvas ) : void
+}
+
+
+class com.balitechy.spacewar.main.VectorialStyle.VectorialBullet {
+	{method} +render ( paramGraphics1 : java.awt.Graphics , paramdouble2 : double , paramdouble3 : double ) : void
+}
+
+
+class com.balitechy.spacewar.main.VectorialStyle.VectorialFactory {
+	{method} +createBackgroundGraphic ( paramGame1 : com.balitechy.spacewar.main.Game ) : com.balitechy.spacewar.main.Interfaces.BackgroundGraphic
+	{method} +createBulletGraphic ( paramGame1 : com.balitechy.spacewar.main.Game ) : com.balitechy.spacewar.main.Interfaces.BulletGraphic
+	{method} +createPlayerGraphic ( paramGame1 : com.balitechy.spacewar.main.Game ) : com.balitechy.spacewar.main.Interfaces.PlayerGraphic
+}
+
+
+class com.balitechy.spacewar.main.VectorialStyle.VectorialPlayer {
+	{method} +render ( paramGraphics1 : java.awt.Graphics , paramdouble2 : double , paramdouble3 : double ) : void
+}
+
+
+
+
+com.balitechy.spacewar.main.Bullet -->  com.balitechy.spacewar.main.Interfaces.BulletGraphic : graphic
+com.balitechy.spacewar.main.BulletController "1" o-- "0..*"  com.balitechy.spacewar.main.Bullet : bl
+com.balitechy.spacewar.main.ColorfulVectorial.ColorfulBackgroundGraphic ..|>  com.balitechy.spacewar.main.Interfaces.BackgroundGraphic
+com.balitechy.spacewar.main.ColorfulVectorial.ColorfulBulletGraphic ..|>  com.balitechy.spacewar.main.Interfaces.BulletGraphic
+com.balitechy.spacewar.main.ColorfulVectorial.ColorfulPlayerGraphic ..|>  com.balitechy.spacewar.main.Interfaces.PlayerGraphic
+com.balitechy.spacewar.main.ColorfulVectorial.ColorfulVectorialFactory ..|>  com.balitechy.spacewar.main.Interfaces.GraphicFactory
+com.balitechy.spacewar.main.Game -->  com.balitechy.spacewar.main.BulletController : bullets
+com.balitechy.spacewar.main.Game -->  com.balitechy.spacewar.main.Interfaces.BackgroundGraphic : backgroundGraphic
+com.balitechy.spacewar.main.Game -->  com.balitechy.spacewar.main.Interfaces.GraphicFactory : graphicFactory
+com.balitechy.spacewar.main.Game -->  com.balitechy.spacewar.main.Player : player
+com.balitechy.spacewar.main.Game -->  com.balitechy.spacewar.main.SpritesImageLoader : sprites
+com.balitechy.spacewar.main.GameConfig *--  com.balitechy.spacewar.main.GameConfig$Style : DEFAULT_STYLE
+com.balitechy.spacewar.main.InputHandler -->  com.balitechy.spacewar.main.Game : game
+com.balitechy.spacewar.main.Player -->  com.balitechy.spacewar.main.Game : game
+com.balitechy.spacewar.main.Player -->  com.balitechy.spacewar.main.Interfaces.PlayerGraphic : graphic
+com.balitechy.spacewar.main.SpriteStyle.SpritesBackgroundGraphic -->  com.balitechy.spacewar.main.Game : game
+com.balitechy.spacewar.main.SpriteStyle.SpritesBackgroundGraphic ..|>  com.balitechy.spacewar.main.Interfaces.BackgroundGraphic
+com.balitechy.spacewar.main.SpriteStyle.SpritesBulletGraphic -->  com.balitechy.spacewar.main.Game : game
+com.balitechy.spacewar.main.SpriteStyle.SpritesBulletGraphic ..|>  com.balitechy.spacewar.main.Interfaces.BulletGraphic
+com.balitechy.spacewar.main.SpriteStyle.SpritesFactory ..|>  com.balitechy.spacewar.main.Interfaces.GraphicFactory
+com.balitechy.spacewar.main.SpriteStyle.SpritesPlayerGraphic -->  com.balitechy.spacewar.main.Game : game
+com.balitechy.spacewar.main.SpriteStyle.SpritesPlayerGraphic ..|>  com.balitechy.spacewar.main.Interfaces.PlayerGraphic
+com.balitechy.spacewar.main.VectorialStyle.VectorialBackground ..|>  com.balitechy.spacewar.main.Interfaces.BackgroundGraphic
+com.balitechy.spacewar.main.VectorialStyle.VectorialBullet ..|>  com.balitechy.spacewar.main.Interfaces.BulletGraphic
+com.balitechy.spacewar.main.VectorialStyle.VectorialFactory ..|>  com.balitechy.spacewar.main.Interfaces.GraphicFactory
+com.balitechy.spacewar.main.VectorialStyle.VectorialPlayer ..|>  com.balitechy.spacewar.main.Interfaces.PlayerGraphic
+
+
+@enduml

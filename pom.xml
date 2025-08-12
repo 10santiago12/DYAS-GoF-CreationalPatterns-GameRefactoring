@@ -1,36 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>edu.eci.arsw</groupId>
     <artifactId>2dgame</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-    
+
     <build>
         <plugins>
+            <!-- Plugin para recursos -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>2.3</version>
             </plugin>
+
+            <!-- Plugin para generar diagramas UML con PlantUML -->
+            <plugin>
+                <groupId>de.elnarion.maven</groupId>
+                <artifactId>plantuml-generator-maven-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>uml</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/generated-docs</outputDirectory>
+                            <outputFilename>game-class-diagram.puml</outputFilename>
+                            <scanPackages>
+                                <scanPackage>com.balitechy.spacewar</scanPackage>
+                            </scanPackages>
+                            <hideFields>false</hideFields>
+                            <hideMethods>false</hideMethods>
+                            <showConstructors>true</showConstructors>
+                            <!-- <methodVisibility>PUBLIC</methodVisibility> -->
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
-    
+
         <resources>
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
-                    <include> **/*.png</include>
+                    <include>**/*.png</include>
                 </includes>
             </resource>
         </resources>
-    
     </build>
-    
-    
-    
+
 </project>

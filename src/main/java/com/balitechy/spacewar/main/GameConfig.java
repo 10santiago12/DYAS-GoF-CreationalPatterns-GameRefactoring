@@ -11,8 +11,7 @@ public class GameConfig {
         SPRITES, VECTORIAL, COLORFUL_VECTORIAL
     }
 
-    // Cambia aquí para elegir el estilo por defecto
-    public static final Style DEFAULT_STYLE = Style.COLORFUL_VECTORIAL;
+    public static final Style DEFAULT_STYLE = Style.VECTORIAL;
 
     public static GraphicFactory getFactory() {
         switch (DEFAULT_STYLE) {
