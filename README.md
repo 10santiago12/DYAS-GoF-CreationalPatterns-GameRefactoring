@@ -4,6 +4,8 @@
 
 ## Diagrama de clases UML
 
+Como recomendación, es mejor abrir la imagen en una pestaña nueva y luego hacer zoom para ver más a detalle
+
 ![Diagrama Juego](/UML/game-class-diagram.svg)
 
 ## Guía modos de visualización
